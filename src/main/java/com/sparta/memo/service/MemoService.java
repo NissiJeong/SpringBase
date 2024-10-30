@@ -4,14 +4,27 @@ import com.sparta.memo.dto.MemoRequestDto;
 import com.sparta.memo.dto.MemoResponseDto;
 import com.sparta.memo.entity.Memo;
 import com.sparta.memo.repository.MemoRepository;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class MemoService {
+public class  MemoService {
 
     private final MemoRepository memoRepository;
+
+    /*
+    //ApplicationContext beanfactory등의 인터페이스를 상속 받아서 생성된 인터페이스
+    //IoC container 인터페이스라고 생각하면 된다.
+    public MemoServcie(ApplicationContext context) {
+        //1. 'Bean' 이름으로 가져오기
+        //MemoRepository memoRepository1 = (MemoRepository) context.getBean("memoRepository");
+
+        //2. 'Bean' 클래스 형식으로 가져오기
+        MemoRepository memoRepository1 = context.getBean(MemoRepository.class);
+        this.memoRepository = memoRepository1;
+    }*/
 
     public MemoService(MemoRepository memoRepository) {
         this.memoRepository = memoRepository;
